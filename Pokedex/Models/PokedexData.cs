@@ -18,10 +18,10 @@ namespace Pokedex
     public partial class PokedexData
     {
         [JsonProperty("pokemon")]
-        public Pokemon[] Pokemon { get; set; }
+        public Pokemons[] Pokemon { get; set; }
     }
 
-    public partial class Pokemon
+    public partial class Pokemons
     {
         [JsonProperty("id")]
         public long Id { get; set; }

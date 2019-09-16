@@ -37,5 +37,16 @@
         <Label
             Text="{Binding PokemonType}">
         </Label>
+        <ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label
+                        Text="{Binding Pokemon}">
+                        
+                    </Label>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
     </StackLayout>
 </ContentPage>
