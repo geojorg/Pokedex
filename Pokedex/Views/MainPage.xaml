@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Pokedex.MainPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <StackLayout 
+        Padding ="20,20,20,20"
+        Orientation="Vertical">
+        <Label
+            HorizontalOptions="CenterAndExpand"
+            FontAttributes="Bold"
+            FontSize="Large"
+            Text="POKEDEX"
+            TextColor="Red">
+        </Label>
+        <Button
+            Text="LOAD POKEMONS"
+            Command="{Binding LoadPokemonsCommand}">
+        </Button>
+        <Image
+            Source="{Binding PokemonImage, Mode=TwoWay}"
+            HeightRequest="120">
+        </Image>
+        <Label
+            Text="Pokemon Name">
+        </Label>
+        <Label
+            Text="{Binding PokemonName}">
+        </Label>
+        <Label
+            Text="Pokemon Type">
+        </Label>
+        <Label
+            Text="{Binding PokemonType}">
+        </Label>
+    </StackLayout>
+</ContentPage>
