@@ -40,8 +40,8 @@
             PokemonType = string.Join(" ", pokedexData.Pokemon[0].Type);
 
             
-            this.Pokemon = new ObservableCollection<Pokemons>(pokedexData.Pokemon);
-
+            var list = new ObservableCollection<Pokemons>(pokedexData.Pokemon);
+            this.Pokemon = list;
 
         //If the method needs some query parameters or has a KEY. (This is OPTIONAL)
         string GenerateRequestUri(string endpoint)
