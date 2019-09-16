@@ -37,14 +37,27 @@
         <Label
             Text="{Binding PokemonType}">
         </Label>
+        <Label
+            Text="Testing in a ListView"
+            HorizontalOptions="CenterAndExpand">
+        </Label>
         <ListView
+            HasUnevenRows="True"
             ItemsSource="{Binding Pokemon}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label
-                            Text="{Binding Type}">
-                        </Label>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Image
+                                Source="{Binding Img}">
+                            </Image>
+                            <Label
+                               Text="{Binding Name}"
+                                HorizontalOptions="Center">
+                            </Label>
+                            
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

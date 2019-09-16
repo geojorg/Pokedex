@@ -73,6 +73,7 @@ namespace Pokedex
 
         [JsonProperty("prev_evolution", NullValueHandling = NullValueHandling.Ignore)]
         public Evolution[] PrevEvolution { get; set; }
+
     }
 
     public partial class Evolution
