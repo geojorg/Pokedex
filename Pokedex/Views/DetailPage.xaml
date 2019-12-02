@@ -5,17 +5,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:Pokedex.ViewModels"
              mc:Ignorable="d"
+             Title="Pokemon Detail"
              x:Class="Pokedex.Views.DetailPage">
     <ContentPage.Content>
         <StackLayout x:DataType="views:DetailViewModel">
             <Label
+                Margin="0,20,0,0"
+                HorizontalOptions="Center"
                 Text="Here is the info from the pokemon Selected">
-                
             </Label>
             <Label
+                HorizontalOptions="Center"
                 FontSize="Large"
                 Text="{Binding PokemonName}">
-
             </Label>
         </StackLayout>
     </ContentPage.Content>

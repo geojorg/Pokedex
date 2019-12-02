@@ -1,5 +1,4 @@
-﻿using Pokedex.Models;
-using System;
+﻿using System;
 using Xamarin.Forms;
 
 namespace Pokedex.ViewModels
@@ -14,7 +13,5 @@ namespace Pokedex.ViewModels
             set { SetProperty(ref name, Uri.UnescapeDataString(value));}
             get { return name; }
         }
-        
-       
     }
 }
