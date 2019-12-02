@@ -1,10 +1,12 @@
-﻿namespace Pokedex.ViewModels
-{
-    using GalaSoft.MvvmLight.Command;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Windows.Input;
+﻿using Pokedex.Models;
+using Pokedex.Views;
+using System;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Xamarin.Forms;
 
+namespace Pokedex.ViewModels
+{
     public class MainViewModel : BaseViewModel
     {
         #region Services
@@ -20,14 +22,7 @@
         #endregion
 
         #region Commands
-        public ICommand LoadPokemonsCommand
-        {
-            get
-            {
-                return new RelayCommand(LoadPokemons);
-            }
-        }
-
+        public ICommand LoadPokemonsCommand => new Command(LoadPokemons);
         private async void LoadPokemons()
         {
             restService = new APIService.RestService();
@@ -39,42 +34,56 @@
             PokemonImage = pokedexData.Pokemon[0].Img;
             PokemonType = string.Join(" ", pokedexData.Pokemon[0].Type);
 
-
             var list = new ObservableCollection<Pokemons>(pokedexData.Pokemon);
             this.Pokemon = list;
         }
-            
+        
+        public ICommand ItemCommand => new Command(PokemonSelected);
+        private async void PokemonSelected()
+        {
+            if (Item != null)
+            {
+                Routing.RegisterRoute("Main/Detail", typeof(DetailPage));
+                await Shell.Current.GoToAsync($"//Main/Detail?name={Item.Name}");
+                Item = null;
+            }
+        }
         #endregion
 
         #region Attributes
-        private string pokemonName;
-        private Uri pokemonImage;
-        private string pokemontype;
+        private string _pokemonName;
+        private Uri _pokemonImage;
+        private string _pokemontype;
         private ObservableCollection<Pokemons> pokemons;
+        private Pokemons _item;
         public const string PokemonSourceData = "http://geojorgx.com/api/v2/pokedex.json";
         #endregion
 
         #region Properties
         public string PokemonName
         {
-            get { return this.pokemonName; }
-            set { SetValue(ref this.pokemonName, value); }
+            get { return _pokemonName; }
+            set { SetProperty(ref _pokemonName, value); }
         }
         public Uri PokemonImage
         {
-            get { return this.pokemonImage; }
-            set { SetValue(ref this.pokemonImage, value); }
+            get { return _pokemonImage; }
+            set { SetProperty(ref _pokemonImage, value); }
         }
         public string PokemonType
         {
-            get { return this.pokemontype; }
-            set { SetValue(ref this.pokemontype, value); }
+            get { return _pokemontype; }
+            set { SetProperty(ref _pokemontype, value); }
         }
-
         public ObservableCollection<Pokemons> Pokemon
         {
             get { return this.pokemons; }
-            set { SetValue(ref this.pokemons, value); }
+            set { SetProperty(ref this.pokemons, value); }
+        }
+        public Pokemons Item
+        {
+            get { return _item; }
+            set { SetProperty(ref _item, value); }
         }
         #endregion
     }

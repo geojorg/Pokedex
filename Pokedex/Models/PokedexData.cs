@@ -6,11 +6,9 @@
 //
 //    var pokedexData = PokedexData.FromJson(jsonString);
 
-namespace Pokedex
+namespace Pokedex.Models
 {
     using System;
-    using System.Collections.Generic;
-
     using System.Globalization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -91,12 +89,12 @@ namespace Pokedex
 
     public partial class PokedexData
     {
-        public static PokedexData FromJson(string json) => JsonConvert.DeserializeObject<PokedexData>(json, Pokedex.Converter.Settings);
+        public static PokedexData FromJson(string json) => JsonConvert.DeserializeObject<PokedexData>(json, Pokedex.Models.Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this PokedexData self) => JsonConvert.SerializeObject(self, Pokedex.Converter.Settings);
+        public static string ToJson(this PokedexData self) => JsonConvert.SerializeObject(self, Pokedex.Models.Converter.Settings);
     }
 
     internal static class Converter

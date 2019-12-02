@@ -5,13 +5,12 @@ using Xamarin.Forms.Xaml;
 namespace Pokedex.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class DetailPage : ContentPage
     {
-        public MainPage()
+        public DetailPage()
         {
             InitializeComponent();
-            BindingContext = new MainViewModel();
+            BindingContext = new DetailViewModel();
         }
     }
 }
-

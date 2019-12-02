@@ -1,12 +1,13 @@
-﻿namespace Pokedex
-{
-    using System;
-    using System.Diagnostics;
-    using System.Net.Http;
-    using System.Threading.Tasks;
-    using Xamarin.Essentials;
-    using Xamarin.Forms;
+﻿using Pokedex.Models;
+using System;
+using System.Diagnostics;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
+namespace Pokedex
+{
     public class APIService
     {
         public static void ConectivityStatus()

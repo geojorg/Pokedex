@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:Pokedex.ViewModels"
+             xmlns:model="clr-namespace:Pokedex.Models"
              mc:Ignorable="d"
-             x:Class="Pokedex.MainPage"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             x:Class="Pokedex.Views.MainPage"
+             Title="Pokemon List">
 
-    <StackLayout 
+    <StackLayout x:DataType="views:MainViewModel"
         Padding ="20,20,20,20"
         Orientation="Vertical">
         <Label
@@ -41,26 +43,26 @@
             Text="Testing in a ListView"
             HorizontalOptions="CenterAndExpand">
         </Label>
-        <ListView
-            HasUnevenRows="True"
+        <CollectionView
+            SelectedItem="{Binding Item, Mode=TwoWay}"
+            SelectionMode="Single"
+            SelectionChangedCommand="{Binding ItemCommand}"
             ItemsSource="{Binding Pokemon}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout
-                            Orientation="Horizontal">
-                            <Image
-                                Source="{Binding Img}">
-                            </Image>
-                            <Label
-                               Text="{Binding Name}"
-                                HorizontalOptions="Center">
-                            </Label>
-                            
-                        </StackLayout>
-                    </ViewCell>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Pokemons">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Image
+                            Source="{Binding Img}">
+                        </Image>
+                        <Label
+                            Text="{Binding Name}"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+                        </Label>
+                    </StackLayout>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </StackLayout>
 </ContentPage>
